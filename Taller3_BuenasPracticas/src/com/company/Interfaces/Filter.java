@@ -34,4 +34,27 @@ public interface Filter {
         }
 
     } //Cierre del método yearFilter.
+
+    /**
+     * Método para filtrado de género heredado de la interfaz Filter.
+     * @param songs Objeto con las características de la canción.
+     * @param genre Parámetro que almacena el género de la canción.
+     */
+    static void genreFilter(ArrayList<SongList> songs, String genre) {
+        ArrayList<SongList> listFilterByGenre = new ArrayList<SongList>();
+        for (SongList i: songs) {
+            if (i.getGenre().equals(genre)){
+                listFilterByGenre.add(i);
+            }
+        }
+        if (listFilterByGenre.isEmpty()){
+            System.out.println("No existen canciones asociadas al género " +
+                    "ingresado.");
+        } else {
+            for (Song j: listFilterByGenre){
+                System.out.println(j.toString());
+            }
+        }
+
+    } //Cierre del método genreFilter.
 }
