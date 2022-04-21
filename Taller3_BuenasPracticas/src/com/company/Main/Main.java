@@ -4,6 +4,7 @@ import com.company.Classes.Input;
 import com.company.Classes.Song;
 import com.company.Classes.SongList;
 import com.company.Interfaces.Filter;
+import com.company.Interfaces.Organize;
 
 import java.util.ArrayList;
 import java.util.Scanner;
