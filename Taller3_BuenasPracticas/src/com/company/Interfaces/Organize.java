@@ -66,4 +66,59 @@ public interface Organize {
             System.out.println(j.toString());
         }
     } //Cierre del método organizeListDuration.
-}
+
+    /**
+     * Método para organizar la canción por fecha, heredado de la interfaz
+     * Organize.
+     * @param songs Objeto con las características de la canción.
+     */
+    static void organizeListDate(ArrayList<SongList> songs) {
+        ArrayList list1 = new ArrayList<>();
+        ArrayList<SongList> listOrderByDate = new ArrayList<SongList>();
+        for (Song i: songs) {
+            ArrayList list2 = new ArrayList<>();
+            list2.add(i.getDate());
+            list2.add(i.getId());
+            list1.add(list2);
+        }
+        ArrayList OrderList1 = new ArrayList<>();
+        while (list1.size() > 0) {
+            for (int k = 0; k < list1.size(); k++){
+                ArrayList Pos = (ArrayList) list1.get(k);
+                LocalDate date1 = (LocalDate) Pos.get(0);
+                int ident = (int) Pos.get(1);
+                boolean menor = true;
+
+                for (int l = 0; l < list1.size(); l++){
+                    if (l != k){
+                        ArrayList Pos2 = (ArrayList) list1.get(l);
+                        LocalDate date2 = (LocalDate) Pos2.get(0);
+                        int ident2 = (int) Pos2.get(1);
+                        if (date1.isAfter(date2)){
+                            menor = false;
+                        }
+                    }
+                }
+                if (menor) {
+                    OrderList1.add(Pos);
+                    list1.remove(k);
+                    k = k - 1;
+                }
+            }
+        } //Cierre del ciclo While.
+
+        for (int j = 0; j < OrderList1.size(); j++){
+            for (SongList i: songs) {
+                ArrayList Pos1 = (ArrayList) OrderList1.get(j);
+                if ((Pos1.get(0).equals(i.getDate())) &&
+                        (Pos1.get(1).equals(i.getId())))
+                {
+                    listOrderByDate.add(i);
+                }
+            }
+        }
+        for (Song j: listOrderByDate){
+            System.out.println(j.toString());
+        }
+    } //Cierre del método organizeListDate.
+} //Cierre de Organize Interface

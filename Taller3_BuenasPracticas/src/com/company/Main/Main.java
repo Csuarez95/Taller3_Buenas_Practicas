@@ -207,7 +207,40 @@ public class Main {
                                     }
                                     break;
                                 case 2:
+                                    System.out.println("Eliminando canción");
+                                    if (mainList.isEmpty()){
+                                        System.out.println("No hay canciones " +
+                                                "para eliminar");
+                                    } else {
+                                        mainList =
+                                                SongList.eliminateSong(mainList);
+                                    }
 
+                                    boolean flag5 = true;
+                                    while (flag5){
+                                        System.out.println("¿Desea eliminar " +
+                                                "otra canción?");
+                                        System.out.println("1. SI \n 2. NO");
+                                        int option = Input.verificationNumber();
+                                        switch (option) {
+                                            case 1:
+                                                mainList =
+                                                        SongList.
+                                                                eliminateSong(mainList);
+                                                break;
+                                            case 2:
+                                                if (mainList.isEmpty()){
+                                                    System.out.println("No " +
+                                                            "hay canciones para " +
+                                                            "eliminar");
+                                                }
+                                                flag5 = false;
+                                                break;
+                                            default:
+                                                System.out.println("Ingrese " +
+                                                        "opción válida");
+                                        }
+                                    } //Cierre while flag5
                                     break;
                                 case 3:
                                     boolean flag6 = true;
@@ -251,7 +284,39 @@ public class Main {
                                     }
                                     break;
                                 case 4:
-
+                                    boolean flag7 = true;
+                                    while (flag7) {
+                                        System.out.println("Organización de " +
+                                                "canciones");
+                                        System.out.println("¿Que tipo de " +
+                                                "organización desea aplicar a" +
+                                                " la biblioteca?");
+                                        System.out.println("1. Por duración " +
+                                                "\n2. Por fecha\n3. Regresar " +
+                                                "al menú");
+                                        int option3 = Input.verificationNumber();
+                                        switch (option3){
+                                            case 1:
+                                                System.out.println(
+                                                        "Organizando por " +
+                                                                "duración");
+                                                Organize.organizeListDuration(
+                                                        mainList);
+                                                break;
+                                            case 2:
+                                                System.out.println(
+                                                        "Organizando por fecha");
+                                                Organize.organizeListDate(
+                                                        mainList);
+                                                break;
+                                            case 3:
+                                                flag7 = false;
+                                                break;
+                                            default:
+                                                System.out.println("Ingrese " +
+                                                        "opción válida");
+                                        }
+                                    }
                                     break;
                                 case 5:
                                     System.out.println("Saliendo al menú " +
